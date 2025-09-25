@@ -1,0 +1,320 @@
+// Variables SCSS
+$primary-color: #1976d2;
+$secondary-color: #666;
+$gap-small: 8px;
+$gap-medium: 16px;
+$gap-large: 20px;
+$border-radius: 8px;
+$photo-size: 120px;
+$max-width: 1200px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin card-spacing {
+  margin: $gap-medium 0;
+}
+
+@mixin mobile-responsive {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet-responsive {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Styles principaux
+.spacer {
+  flex: 1 1 auto;
+}
+
+.cv-container {
+  max-width: $max-width;
+  margin: $gap-large auto;
+  padding: 0 $gap-medium;
+  
+  @include mobile-responsive {
+    margin: $gap-medium auto;
+    padding: 0 $gap-small;
+  }
+}
+
+.header-card {
+  margin-bottom: $gap-large;
+  
+  mat-card-content {
+    padding: $gap-large !important;
+    
+    @include mobile-responsive {
+      padding: $gap-medium !important;
+    }
+  }
+}
+
+.header-content {
+  @include flex-center;
+  gap: $gap-large;
+  
+  @include mobile-responsive {
+    flex-direction: column;
+    text-align: center;
+    gap: $gap-medium;
+  }
+}
+
+.profile-photo {
+  img {
+    width: $photo-size;
+    height: $photo-size;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid $primary-color;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    @include mobile-responsive {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.personal-info {
+  h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: $primary-color;
+    font-weight: 700;
+    
+    @include mobile-responsive {
+      font-size: 2em;
+    }
+  }
+  
+  h2 {
+    margin: 5px 0 15px 0;
+    font-weight: 300;
+    color: $secondary-color;
+    font-size: 1.3em;
+    
+    @include mobile-responsive {
+      font-size: 1.1em;
+    }
+  }
+}
+
+.contact-info {
+  p {
+    @include flex-center;
+    gap: $gap-small;
+    margin: $gap-small 0;
+    color: $secondary-color;
+    
+    mat-icon {
+      color: $primary-color;
+      font-size: 18px;
+    }
+    
+    @include mobile-responsive {
+      justify-content: center;
+    }
+  }
+}
+
+.cv-body {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: $gap-large;
+  
+  @include tablet-responsive {
+    grid-template-columns: 1fr 1.5fr;
+    gap: $gap-medium;
+  }
+  
+  @include mobile-responsive {
+    grid-template-columns: 1fr;
+    gap: $gap-medium;
+  }
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-large;
+  
+  @include mobile-responsive {
+    gap: $gap-medium;
+  }
+}
+
+// Cartes avec animations
+mat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Section compétences
+.skills-section {
+  @include card-spacing;
+  
+  h3 {
+    margin-bottom: 12px;
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+mat-chip-listbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap-small;
+  
+  mat-chip-option {
+    background-color: lighten($primary-color, 40%);
+    color: $primary-color;
+    border: 1px solid lighten($primary-color, 20%);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Expérience et formation
+.experience-item, .education-item {
+  @include card-spacing;
+  position: relative;
+  padding-left: 20px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 4px;
+    height: 20px;
+    background-color: $primary-color;
+    border-radius: 2px;
+  }
+  
+  h3 {
+    margin: 0 0 4px 0;
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+  
+  h4 {
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    color: $secondary-color;
+    font-style: italic;
+    font-size: 0.95em;
+  }
+  
+  p {
+    margin: 8px 0;
+    line-height: 1.6;
+    color: darken($secondary-color, 10%);
+  }
+}
+
+// Liste des langues
+mat-list {
+  mat-list-item {
+    color: $secondary-color;
+    
+    &::before {
+      content: '•';
+      color: $primary-color;
+      margin-right: $gap-small;
+      font-weight: bold;
+    }
+  }
+}
+
+// Titres des cartes
+mat-card-title {
+  color: $primary-color !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 1.1em !important;
+}
+
+// Dividers avec style
+mat-divider {
+  margin: $gap-medium 0 !important;
+  background-color: lighten($secondary-color, 30%);
+}
+
+// Animations d'entrée
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cv-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// Mode sombre (optionnel)
+@media (prefers-color-scheme: dark) {
+  .cv-container {
+    background-color: #303030;
+    color: #ffffff;
+  }
+  
+  .personal-info h2,
+  .contact-info p,
+  .experience-item h4,
+  .education-item h4 {
+    color: #cccccc;
+  }
+}
+
+// Responsive pour impression
+@media print {
+  .cv-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  mat-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+  }
+  
+  .cv-body {
+    grid-template-columns: 1fr 2fr;
+  }
+}

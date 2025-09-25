@@ -1,0 +1,117 @@
+<mat-toolbar color="primary">
+  <span>Mon CV</span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>download</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="cv-container">
+  <!-- En-tête avec photo et infos personnelles -->
+  <mat-card class="header-card">
+    <mat-card-content>
+      <div class="header-content">
+        <div class="profile-photo">
+          <img src="assets/profile.jpg" alt="Photo de profil" />
+        </div>
+        <div class="personal-info">
+          <h1>Prénom NOM</h1>
+          <h2>Titre du poste</h2>
+          <div class="contact-info">
+            <p><mat-icon>email</mat-icon> email@example.com</p>
+            <p><mat-icon>phone</mat-icon> +33 1 23 45 67 89</p>
+            <p><mat-icon>location_on</mat-icon> Ville, France</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="cv-body">
+    <!-- Colonne de gauche -->
+    <div class="left-column">
+      <!-- Compétences -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Compétences</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="skills-section">
+            <h3>Techniques</h3>
+            <mat-chip-listbox>
+              <mat-chip-option>Angular</mat-chip-option>
+              <mat-chip-option>TypeScript</mat-chip-option>
+              <mat-chip-option>JavaScript</mat-chip-option>
+              <mat-chip-option>HTML/CSS</mat-chip-option>
+              <mat-chip-option>Node.js</mat-chip-option>
+            </mat-chip-listbox>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="skills-section">
+            <h3>Outils</h3>
+            <mat-chip-listbox>
+              <mat-chip-option>Git</mat-chip-option>
+              <mat-chip-option>VS Code</mat-chip-option>
+              <mat-chip-option>Docker</mat-chip-option>
+            </mat-chip-listbox>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Langues -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Langues</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>Français - Natif</mat-list-item>
+            <mat-list-item>Anglais - Courant</mat-list-item>
+            <mat-list-item>Espagnol - Notions</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Colonne de droite -->
+    <div class="right-column">
+      <!-- Expérience -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Expérience professionnelle</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="experience-item">
+            <h3>Développeur Frontend</h3>
+            <h4>Entreprise XYZ - 2022 à aujourd'hui</h4>
+            <p>Description des missions et réalisations...</p>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="experience-item">
+            <h3>Développeur Junior</h3>
+            <h4>Startup ABC - 2020 à 2022</h4>
+            <p>Description des missions et réalisations...</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Formation -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Formation</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="education-item">
+            <h3>Master Informatique</h3>
+            <h4>Université de Paris - 2020</h4>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="education-item">
+            <h3>Licence Informatique</h3>
+            <h4>Université de Lyon - 2018</h4>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
